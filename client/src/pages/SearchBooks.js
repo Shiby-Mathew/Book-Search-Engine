@@ -39,9 +39,12 @@ const SearchBooks = () => {
     }
 
     try {
-      //***********need to change GraphQl */
-      const response = await searchGoogleBooks(searchInput);
+      //********** change GraphQl */Changed to fetch
+      const response = await fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=${searchInput}`
+      );
 
+      //**********
       if (!response.ok) {
         throw new Error("something went wrong!");
       }
@@ -79,7 +82,7 @@ const SearchBooks = () => {
       await useMutation(SAVE_BOOK, {
         variables: { newBook: { ...bookToSave } },
       });
-
+      //**********
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
     } catch (err) {

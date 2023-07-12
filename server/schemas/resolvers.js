@@ -28,18 +28,40 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+
     ///need to do*********************************
-    // addUser:
+
     // saveBook:
+
+    addUser: async (parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
+
+      const token = signToken(user);
+      return { token, user };
+    },
+    saveBook: async (parent, { newBook }, context) => {
+      // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
+      if (context.user) {
+        const addBookUser = await User.findOneAndUpdate(
+          { _id: context.user._d },
+          { $push: { savedBooks: { newBook } } },
+          { $new: true }
+        );
+        return addBookUser;
+      }
+
+      // If user attempts to execute this mutation and isn't logged in, throw an error
+      throw new AuthenticationError("You need to be logged in!");
+    },
 
     removeBook: async (parent, { bookId }, context) => {
       if (context.user) {
-        const updateUser = await findByIdAndUpdate(
+        const removeBookUser = await findOneAndUpdate(
           { _id: context.user._d },
           { $pull: { savedBooks: { bookId } } },
           { $new: true }
         );
-        return updateUser;
+        return removeBookUser;
       }
       throw new AuthenticationError("You need to be logged in!");
     },
