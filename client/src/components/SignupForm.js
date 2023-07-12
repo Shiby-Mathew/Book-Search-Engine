@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 
 //import { createUser } from '../utils/API';
@@ -22,6 +22,14 @@ const SignupForm = () => {
 
   // ************************UseEffects
 
+  useEffect(() => {
+    if (error) {
+      setShowAlert(true);
+    } else {
+      setShowAlert(false);
+    }
+  }, [error]);
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
@@ -30,26 +38,22 @@ const SignupForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    console.log("hello");
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
-
+    console.log("before calling");
+    console.log(userFormData);
     try {
-      const response = await addUser({
+      const { data } = await addUser({
         variable: { ...userFormData },
       });
+      console.log(userFormData);
+      console.log(data.addUser.token);
       Auth.login(data.addUser.token);
-
-      if (!response.ok) {
-        throw new Error("something went wrong!");
-      }
-
-      const { token, user } = await response.json();
-      console.log(user);
-      Auth.login(token);
     } catch (err) {
       console.error(err);
       setShowAlert(true);
