@@ -58,14 +58,13 @@ const SavedBooks = () => {
     }
     // need to change to GraphQl*********
     try {
-      const response = await deleteBook(bookId, token);
+      const response = await removeBook({ variables: { bookId } });
 
       if (!response.ok) {
         throw new Error("something went wrong!");
       }
+      console.log(response);
 
-      const updatedUser = await response.json();
-      setUserData(updatedUser);
       // upon success, remove book's id from localStorage
       removeBookId(bookId);
     } catch (err) {

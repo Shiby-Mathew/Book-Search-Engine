@@ -29,10 +29,6 @@ const resolvers = {
       return { token, user };
     },
 
-    ///need to do*********************************
-
-    // saveBook:
-
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
 
