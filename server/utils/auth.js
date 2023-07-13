@@ -8,15 +8,15 @@ module.exports = {
   // function for our authenticated routes
   authMiddleware: function ({ req }) {
     // allows token to be sent via  req.query or headers
-   // console.log("backend token");
+    console.log("backend token");
     let token = req.query.token || req.headers.authorization;
 
     // ["Bearer", "<tokenvalue>"]
     if (req.headers.authorization) {
       token = token.split(" ").pop().trim();
     }
-    //console.log("token");
-    //console.log(token);
+    console.log("tokenauth.js");
+    console.log(token);
     if (!token) {
       //return res.status(400).json({ message: 'You have no token!' });
       return req;
@@ -27,8 +27,8 @@ module.exports = {
       //console.log(token);
 
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
-      console.log("data");
-      //console.log({ data });
+      console.log("data********");
+      console.log({ data });
       req.user = data;
     } catch {
       console.log("Invalid token");

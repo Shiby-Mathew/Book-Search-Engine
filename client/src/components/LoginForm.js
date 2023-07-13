@@ -36,12 +36,15 @@ const LoginForm = () => {
       event.preventDefault();
       event.stopPropagation();
     }
+    console.log("hello");
+    console.log(userFormData);
 
     try {
       const { data } = await loginUser({
         variables: { ...userFormData },
       });
-
+      // **************Error not returning
+      console.log(data.loginUser);//undefined
       Auth.login(data.loginUser.token);
     } catch (err) {
       console.error(err);

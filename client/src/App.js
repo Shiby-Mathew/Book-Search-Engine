@@ -20,10 +20,12 @@ const httpLink = createHttpLink({
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  //console.log("creating token");
-  // NOT GETTING TOKEN
+  console.log("creating token");
+  //NOT GETTING TOKEN
   const token = localStorage.getItem("id_token");
-  //console.log(token);
+  // const token =
+  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoibmV3bmFtZSIsImVtYWlsIjoibmV3bmFtZUBnbWFpbC5jb20iLCJfaWQiOiI2NGFlOWZiNGU2MjZkZDYzMjBjMTMwN2YifSwiaWF0IjoxNjg5MTY1NzQ4LCJleHAiOjE2ODkxNzI5NDh9.rE9eGFEFnZ9OyBt0CWRDfSL-c7V0raROlvzvd5Jv7Po";
+  console.log(token); //null
   // return the headers to the context so httpLink can read them
   return {
     headers: {
