@@ -43,10 +43,11 @@ const LoginForm = () => {
       const { data } = await loginUser({
         variables: { ...userFormData },
       });
+      console.log(data);
       // **************Error not returning
       console.log("data.loginUser");
-      console.log(data.loginUser); //undefined
-      Auth.login(data.loginUser.token);
+      console.log(data.login); //undefined
+      Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
       setShowAlert(true);

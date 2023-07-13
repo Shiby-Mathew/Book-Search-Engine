@@ -15,7 +15,7 @@ const resolvers = {
     login: async (parent, { email, password }) => {
       console.log("hello********");
       const user = await User.findOne({ email });
-      console.log(user);
+      //console.log(user);
 
       if (!user) {
         throw new AuthenticationError("No profile with this email found!");
@@ -28,8 +28,8 @@ const resolvers = {
       }
 
       const token = signToken(user);
-      console.log("tokenresolvers");
-      console.log(token);
+      //console.log("tokenresolvers");
+      //console.log(token);
       return { token, user };
     },
 
