@@ -36,7 +36,7 @@ const LoginForm = () => {
       event.preventDefault();
       event.stopPropagation();
     }
-    console.log("hello");
+    console.log("userFormData");
     console.log(userFormData);
 
     try {
@@ -44,7 +44,8 @@ const LoginForm = () => {
         variables: { ...userFormData },
       });
       // **************Error not returning
-      console.log(data.loginUser);//undefined
+      console.log("data.loginUser");
+      console.log(data.loginUser); //undefined
       Auth.login(data.loginUser.token);
     } catch (err) {
       console.error(err);

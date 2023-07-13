@@ -25,6 +25,7 @@ const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
   // const token =
   //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoibmV3bmFtZSIsImVtYWlsIjoibmV3bmFtZUBnbWFpbC5jb20iLCJfaWQiOiI2NGFlOWZiNGU2MjZkZDYzMjBjMTMwN2YifSwiaWF0IjoxNjg5MTY1NzQ4LCJleHAiOjE2ODkxNzI5NDh9.rE9eGFEFnZ9OyBt0CWRDfSL-c7V0raROlvzvd5Jv7Po";
+  console.log("token");
   console.log(token); //null
   // return the headers to the context so httpLink can read them
   return {
