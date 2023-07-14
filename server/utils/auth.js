@@ -15,19 +15,16 @@ module.exports = {
     if (req.headers.authorization) {
       token = token.split(" ").pop().trim();
     }
-    //console.log("tokenauth.js");
-    //console.log(token);
+
     if (!token) {
       //return res.status(400).json({ message: 'You have no token!' });
       return req;
     }
-    //*****************************ERROR */
-    // verify token and get user data out of it
+
     try {
       //console.log(token);
-
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
-     
+
       // console.log({ data });
       req.user = data;
     } catch {
