@@ -51,7 +51,7 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 
 ## Deployed Link
 
-[The link for my deployed application can viewed here](https://shiby-mathew.github.io/react-portfolio/)
+[The link for my deployed application can viewed here](https://shiby)
 
 ## ScreenShots
 
