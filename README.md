@@ -51,7 +51,7 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 
 ## Deployed Link
 
-[The link for my deployed application can viewed here](https://shiby)
+[The link for my deployed application can viewed here](https://mysearch-engine-app-c79c70af96e8.herokuapp.com/)
 
 ## ScreenShots
 
