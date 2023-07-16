@@ -24,8 +24,6 @@ const authLink = setContext((_, { headers }) => {
   //NOT GETTING TOKEN
   const token = localStorage.getItem("id_token");
 
-  // console.log("token");
-  // console.log(token); //null
   // return the headers to the context so httpLink can read them
   return {
     headers: {

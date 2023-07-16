@@ -41,12 +41,10 @@ const SearchBooks = () => {
     }
 
     try {
-      //********** change GraphQl */Changed to fetch
       const response = await fetch(
         `https://www.googleapis.com/books/v1/volumes?q=${searchInput}`
       );
 
-      //**********
       if (!response.ok) {
         throw new Error("something went wrong!");
       }
@@ -80,16 +78,14 @@ const SearchBooks = () => {
     if (!token) {
       return false;
     }
-    // ***************Changed
-    // console.log(bookToSave);
+
     try {
       await saveBook({
         variables: { newBook: { ...bookToSave } },
       });
-      //**********
+
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
-      //window.location.reload();
     } catch (err) {
       console.error(err);
     }

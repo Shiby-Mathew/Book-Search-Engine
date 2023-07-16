@@ -27,8 +27,7 @@ const resolvers = {
       }
 
       const token = signToken(user);
-      //console.log("tokenresolvers");
-      //console.log(token);
+      
       return { token, user };
     },
 
